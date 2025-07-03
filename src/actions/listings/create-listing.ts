@@ -47,7 +47,7 @@ export const createListing = async (listing: CreateListingProps): Promise<Action
       };
     }
 
-    await prisma.listing.create({
+    const createdListing = await prisma.listing.create({
       data: {
         description,
         price,
@@ -73,6 +73,9 @@ export const createListing = async (listing: CreateListingProps): Promise<Action
     return {
       status: "SUCCESS",
       message: "Listing created successfully",
+      data: {
+        id: createdListing.id,
+      },
     };
   } catch {
     return {

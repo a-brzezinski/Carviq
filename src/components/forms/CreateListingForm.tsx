@@ -67,14 +67,19 @@ export const CreateListingForm = () => {
         }
         const uploadedUrls = response.map(file => file.ufsUrl).join(",");
 
-        const payLoad = {
+        const payload = {
           ...value,
           images: uploadedUrls,
         };
 
-        await createListing(payLoad);
-        router.push("/");
-        toast.success("Listing created successfully!");
+        const { message, status, data } = await createListing(payload);
+
+        if (status === "SUCCESS" && data?.id) {
+          router.push(`/offer/${data.id}`);
+          toast.success("Listing created successfully!");
+        } else {
+          toast.error(message);
+        }
       } catch (error) {
         toast.error("Error in form submission: " + (error instanceof Error ? error.message : "Unknown error"));
       } finally {
