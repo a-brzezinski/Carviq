@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-slate-100 px-6">
+    <div className="flex min-h-screen flex-col items-center justify-center px-6">
       <h1 className="mb-4 text-center text-5xl leading-tight font-extrabold text-gray-900 md:text-6xl">
         Find Your <span className="text-primary">Perfect Car</span>
       </h1>
